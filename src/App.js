@@ -7,6 +7,7 @@ import Error from "./pages/Error";
 import Navbar from "./components/Navbar";
 import ChoixPetit from "./pages/ChoixPetit";
 import ChoixGrand from "./pages/ChoixGrand";
+import Achat from "./pages/Achat";
 
 function Layout() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/produit" element={<Produit />} />
           <Route path="/choixpetit" element={<ChoixPetit />} />
           <Route path="/choixgrand" element={<ChoixGrand />} />
+          <Route path="/achat" element={<Achat />} />
         </Route>
           <Route path="*" element={<Error />} />
 

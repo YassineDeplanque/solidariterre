@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import tomate from '../assets/tomate.webp'
 
 export default function ChoixPetit() {
@@ -103,13 +104,16 @@ export default function ChoixPetit() {
             <h2 style={styles.name}>{produit.name}</h2>
             <p style={styles.description}>{produit.description}</p>
             <p style={styles.price}>{produit.price}</p>
-            <button
-              style={styles.button}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#2e7d32")}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#43a047")}
+            <NavLink
+              to='/achat'
+              style={({ isActive }) =>
+                isActive
+                  ? { ...styles.button, ...styles.buttonActive }
+                  : styles.button
+              }
             >
-              Voir les options
-            </button>
+              Acheter
+            </NavLink>
           </div>
         ))}
       </div>

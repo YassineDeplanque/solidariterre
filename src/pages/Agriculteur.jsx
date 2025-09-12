@@ -1,3 +1,5 @@
+import agri1 from '../assets/agri1.jpg'
+
 function Agriculteur() {
     const styles = {
         container: {
@@ -58,7 +60,7 @@ function Agriculteur() {
             id: 1,
             name: "Marie Dupont",
             description: "Agricultrice bio depuis 10 ans. Passionnée par les légumes de saison et la permaculture.",
-            image: "/images/marie.jpg",
+            image: agri1,
         },
         {
             id: 2,
