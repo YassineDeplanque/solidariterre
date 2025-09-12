@@ -1,9 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import panierxl from '../assets/panierxl.avif';
-import petitpanier from '../assets/petitpanier.jpg';
 
-export default function Produit() {
+export default function ChoixGrand() {
   const styles = {
     container: {
       display: "flex",
@@ -59,7 +56,6 @@ export default function Produit() {
       marginBottom: "15px",
     },
     button: {
-      display: "inline-block",
       padding: "10px 20px",
       backgroundColor: "#43a047",
       color: "white",
@@ -67,10 +63,9 @@ export default function Produit() {
       borderRadius: "8px",
       cursor: "pointer",
       fontSize: "1rem",
-      textDecoration: "none",
       transition: "background-color 0.3s ease",
     },
-    buttonActive: {
+    buttonHover: {
       backgroundColor: "#2e7d32",
     },
   };
@@ -81,16 +76,14 @@ export default function Produit() {
       name: "Panier individuel",
       description: "Un assortiment de légumes de saison cultivés localement pour une personne. Environ 1kg.",
       price: "2.70€",
-      image: petitpanier,
-      link: "/choixpetit",
+      image: './',
     },
     {
       id: 2,
       name: "Panier familial",
-      description: "Un assortiment de légumes de saison cultivés localement. Format familial. Environ 5kg.",
-      price: "10.55€",
-      image: panierxl,
-      link: "/choixgrand",
+      description: "Assortiment de 5kg de fruits et de légumes. Format familial.",
+      price: "10.55€ le panier",
+      image: './',
     },
   ];
 
@@ -109,16 +102,13 @@ export default function Produit() {
             <h2 style={styles.name}>{produit.name}</h2>
             <p style={styles.description}>{produit.description}</p>
             <p style={styles.price}>{produit.price}</p>
-            <NavLink
-              to={produit.link}
-              style={({ isActive }) =>
-                isActive
-                  ? { ...styles.button, ...styles.buttonActive }
-                  : styles.button
-              }
+            <button
+              style={styles.button}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#2e7d32")}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#43a047")}
             >
               Voir les options
-            </NavLink>
+            </button>
           </div>
         ))}
       </div>

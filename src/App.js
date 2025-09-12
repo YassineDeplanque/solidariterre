@@ -5,6 +5,8 @@ import Engagement from "./pages/Engagement";
 import Produit from "./pages/Produit";
 import Error from "./pages/Error";
 import Navbar from "./components/Navbar";
+import ChoixPetit from "./pages/ChoixPetit";
+import ChoixGrand from "./pages/ChoixGrand";
 
 function Layout() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/agriculteur" element={<Agriculteur />} />
           <Route path="/engagement" element={<Engagement />} />
           <Route path="/produit" element={<Produit />} />
+          <Route path="/choixpetit" element={<ChoixPetit />} />
+          <Route path="/choixgrand" element={<ChoixGrand />} />
         </Route>
           <Route path="*" element={<Error />} />
 
