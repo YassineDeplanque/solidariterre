@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
-    // Met à jour quand on resize
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
-      if (window.innerWidth > 768) setIsOpen(false); // ferme le menu si on repasse en desktop
+      if (window.innerWidth > 768) setIsOpen(false);
     };
 
     window.addEventListener("resize", handleResize);
@@ -17,7 +17,7 @@ export default function Navbar() {
 
   const styles = {
     navbar: {
-      backgroundColor: "#2e7d32", // vert principal
+      backgroundColor: "#2e7d32",
       color: "white",
       display: "flex",
       justifyContent: "space-between",
@@ -42,6 +42,10 @@ export default function Navbar() {
       fontWeight: "500",
       transition: "color 0.3s",
     },
+    activeLink: {
+      color: "#a5d6a7", // vert clair pour indiquer la page active
+      fontWeight: "bold",
+    },
     burger: {
       fontSize: "1.5rem",
       cursor: "pointer",
@@ -58,24 +62,45 @@ export default function Navbar() {
 
   return (
     <nav style={styles.navbar}>
-      <a href="/" style={styles.brand}>
+      <NavLink to="/" style={styles.brand}>
         SolidariTerre
-      </a>
+      </NavLink>
 
       {/* Liens desktop */}
       {!isMobile && (
         <div style={styles.links}>
-          <a href="/" style={styles.link}>
+          <NavLink
+            to="/"
+            style={({ isActive }) =>
+              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
+            }
+          >
             Accueil
-          </a>
-          <a href="/about" style={styles.link}>
+          </NavLink>
+          <NavLink
+            to="/agriculteur"
+            style={({ isActive }) =>
+              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
+            }
+          >
             Nos agriculteurs
-          </a><a href="/about" style={styles.link}>
+          </NavLink>
+          <NavLink
+            to="/produit"
+            style={({ isActive }) =>
+              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
+            }
+          >
             Nos produits
-          </a>
-          <a href="/contact" style={styles.link}>
+          </NavLink>
+          <NavLink
+            to="/engagement"
+            style={({ isActive }) =>
+              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
+            }
+          >
             Notre engagement
-          </a>
+          </NavLink>
         </div>
       )}
 
@@ -89,15 +114,42 @@ export default function Navbar() {
       {/* Menu mobile */}
       {isMobile && isOpen && (
         <div style={styles.mobileMenu}>
-          <a href="/" style={styles.link} onClick={() => setIsOpen(false)}>
+          <NavLink
+            to="/"
+            style={({ isActive }) =>
+              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
+            }
+            onClick={() => setIsOpen(false)}
+          >
             Accueil
-          </a>
-          <a href="/about" style={styles.link} onClick={() => setIsOpen(false)}>
-            À propos
-          </a>
-          <a href="/contact" style={styles.link} onClick={() => setIsOpen(false)}>
-            Contact
-          </a>
+          </NavLink>
+          <NavLink
+            to="/agriculteur"
+            style={({ isActive }) =>
+              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
+            }
+            onClick={() => setIsOpen(false)}
+          >
+            Nos agriculteurs
+          </NavLink>
+          <NavLink
+            to="/produit"
+            style={({ isActive }) =>
+              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
+            }
+            onClick={() => setIsOpen(false)}
+          >
+            Nos produits
+          </NavLink>
+          <NavLink
+            to="/engagement"
+            style={({ isActive }) =>
+              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
+            }
+            onClick={() => setIsOpen(false)}
+          >
+            Notre engagement
+          </NavLink>
         </div>
       )}
     </nav>
