@@ -70,6 +70,8 @@ export default function Navbar() {
           </a>
           <a href="/about" style={styles.link}>
             Nos agriculteurs
+          </a><a href="/about" style={styles.link}>
+            Nos produits
           </a>
           <a href="/contact" style={styles.link}>
             Notre engagement
