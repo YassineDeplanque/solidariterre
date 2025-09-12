@@ -69,10 +69,10 @@ export default function Navbar() {
             Accueil
           </a>
           <a href="/about" style={styles.link}>
-            À propos
+            Nos agriculteurs
           </a>
           <a href="/contact" style={styles.link}>
-            Contact
+            Notre engagement
           </a>
         </div>
       )}
