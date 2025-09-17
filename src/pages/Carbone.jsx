@@ -76,7 +76,7 @@ export default function Carbone() {
     labels: ["Supermarché", "SolidariTerre"],
     datasets: [
       {
-        label: "CO₂ émis (kg)",
+        label: "CO₂ émis",
         data: [4.5, 1.2],
         backgroundColor: ["#f44336", "#43a047"], // rouge vs vert
         borderRadius: 5,
@@ -95,11 +95,23 @@ export default function Carbone() {
         text: "Comparatif CO₂ par achat",
         font: { size: 18 },
       },
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            return context.dataset.label + ': ' + context.parsed.y + ' kg CO₂';
+          }
+        }
+      }
     },
     scales: {
       y: {
         beginAtZero: true,
-        ticks: { stepSize: 1 },
+        ticks: {
+          stepSize: 1,
+          callback: function(value) {
+            return value + ' kg CO₂';
+          }
+        },
       },
     },
   };
