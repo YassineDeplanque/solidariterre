@@ -101,6 +101,14 @@ export default function Navbar() {
           >
             Notre engagement
           </NavLink>
+          <NavLink
+            to="/login"
+            style={({ isActive }) =>
+              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
+            }
+          >
+            Se connectrer
+          </NavLink>
         </div>
       )}
 
@@ -149,6 +157,15 @@ export default function Navbar() {
             onClick={() => setIsOpen(false)}
           >
             Notre engagement
+          </NavLink>
+          <NavLink
+            to="/login"
+            style={({ isActive }) =>
+              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
+            }
+            onClick={() => setIsOpen(false)}
+          >
+            Se connecter
           </NavLink>
         </div>
       )}
