@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function Achat() {
   const navigate = useNavigate();
@@ -108,7 +109,27 @@ export default function Achat() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/carbone");
+
+    // Exemple d’impacts illustratifs
+    const kmEvites = 3;
+    const eauEconomisee = 80;
+    const legumesSauves = 2;
+
+    Swal.fire({
+      title: "🎉 Merci pour votre achat !",
+      html: `
+        <p>🌍 Avec votre panier vous avez :</p>
+        <ul style="text-align:left; margin-top:10px; font-size:1.1rem;">
+          <li>🚗 Évité ${kmEvites} km de voiture</li>
+          <li>🚿 Économisé ${eauEconomisee} L d'eau</li>
+          <li>🍅 Sauvé ${legumesSauves} kg de légumes</li>
+        </ul>
+      `,
+      confirmButtonText: "Voir mon bilan carbone",
+      confirmButtonColor: "#43a047",
+    }).then(() => {
+      navigate("/carbone");
+    });
   };
 
   return (
@@ -117,39 +138,19 @@ export default function Achat() {
       <form style={styles.form} onSubmit={handleSubmit}>
         <div>
           <label style={styles.label}>Nom sur la carte</label>
-          <input
-            type="text"
-            placeholder="Nom Prénom"
-            style={styles.input}
-            required
-          />
+          <input type="text" placeholder="Nom Prénom" style={styles.input} required />
         </div>
         <div>
           <label style={styles.label}>Numéro de carte</label>
-          <input
-            type="text"
-            placeholder="1234 5678 9012 3456"
-            style={styles.input}
-            required
-          />
+          <input type="text" placeholder="1234 5678 9012 3456" style={styles.input} required />
         </div>
         <div>
           <label style={styles.label}>Date d'expiration</label>
-          <input
-            type="text"
-            placeholder="MM/AA"
-            style={styles.input}
-            required
-          />
+          <input type="text" placeholder="MM/AA" style={styles.input} required />
         </div>
         <div>
           <label style={styles.label}>CVV</label>
-          <input
-            type="text"
-            placeholder="123"
-            style={styles.input}
-            required
-          />
+          <input type="text" placeholder="123" style={styles.input} required />
         </div>
         <div>
           <label style={styles.label}>Choisir l'école pour la livraison</label>
