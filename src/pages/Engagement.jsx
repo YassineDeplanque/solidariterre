@@ -66,8 +66,8 @@ export default function Engagement() {
         },
         {
             id: 3,
-            name: "Éducation et Équité",
-            description: "Nous fournissons des paniers à prix juste pour les écoles et communautés.",
+            name: "Équité",
+            description: "Nous fournissons des paniers à prix juste pour les communautés.",
             image: "/images/education.png",
         },
     ];

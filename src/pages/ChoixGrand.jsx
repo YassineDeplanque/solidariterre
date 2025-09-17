@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import tomate from '../assets/tomate.webp';
+import pommes from '../assets/pommes.jpg';
 
 export default function ChoixGrand() {
   const styles = {
@@ -74,17 +76,17 @@ export default function ChoixGrand() {
   const produits = [
     {
       id: 1,
-      name: "Panier individuel",
-      description: "Un assortiment de légumes de saison cultivés localement pour une personne. Environ 1kg.",
-      price: "2.70€",
-      image: './',
+      name: "Panier de tomates",
+      description: "Tomates fraîches cueillies récemment et localement.",
+      price: "10.55€ le panier",
+      image: tomate,
     },
     {
       id: 2,
-      name: "Panier familial",
-      description: "Assortiment de 5kg de fruits et de légumes. Format familial.",
+      name: "Panier de pommes",
+      description: "Pommes fraîches cueillies récemment et localement.",
       price: "10.55€ le panier",
-      image: './',
+      image: pommes,
     },
   ];
 

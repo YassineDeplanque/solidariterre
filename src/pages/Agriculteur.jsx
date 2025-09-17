@@ -1,4 +1,6 @@
 import agri1 from '../assets/agri1.jpg'
+import agri2 from '../assets/agri2.jpg'
+import agri3 from '../assets/agri3.jpg'
 
 function Agriculteur() {
     const styles = {
@@ -58,21 +60,21 @@ function Agriculteur() {
     const agriculteurs = [
         {
             id: 1,
-            name: "Marie Dupont",
-            description: "Agricultrice bio depuis 10 ans. Passionnée par les légumes de saison et la permaculture.",
+            name: "Maurice Dupont",
+            description: "Agriculteur bio depuis 10 ans. Passionné par les légumes de saison et la permaculture.",
             image: agri1,
         },
         {
             id: 2,
             name: "Jean Martin",
-            description: "Éleveur de poules et producteur d'œufs frais pour les écoles locales.",
-            image: "/images/jean.jpg",
+            description: "Éleveur de poules et agriculteur local.",
+            image: agri2,
         },
         {
             id: 3,
-            name: "Sophie Lambert",
-            description: "Cultive des fruits rouges avec amour et respect de l'environnement.",
-            image: "/images/sophie.jpg",
+            name: "Jacques Lambert",
+            description: "Cultive des légumes avec amour et respect de l'environnement.",
+            image: agri3,
         },
     ];
 

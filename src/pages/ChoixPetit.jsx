@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import tomate from '../assets/tomate.webp'
+import tomate from '../assets/tomate.webp';
+import pommes from '../assets/pommes.jpg';
 
 export default function ChoixPetit() {
   const styles = {
@@ -85,7 +86,7 @@ export default function ChoixPetit() {
       name: "Panier de pommes",
       description: "Pommes fraîches cueillies récemment et localement.",
       price: "2.70€ le panier",
-      image: './',
+      image: pommes,
     },
   ];
 
