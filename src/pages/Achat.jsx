@@ -1,7 +1,9 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Achat() {
+  const navigate = useNavigate();
+
   const styles = {
     container: {
       display: "flex",
@@ -58,9 +60,6 @@ export default function Achat() {
       cursor: "pointer",
       transition: "background-color 0.3s ease",
     },
-    buttonHover: {
-      backgroundColor: "#2e7d32",
-    },
   };
 
   const ecoles = [
@@ -107,29 +106,55 @@ export default function Achat() {
     "École Provinces",
   ];
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/carbone");
+  };
+
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>Finaliser votre achat</h1>
-      <form style={styles.form} onSubmit={(e) => e.preventDefault()}>
+      <form style={styles.form} onSubmit={handleSubmit}>
         <div>
           <label style={styles.label}>Nom sur la carte</label>
-          <input type="text" placeholder="Nom Prénom" style={styles.input} />
+          <input
+            type="text"
+            placeholder="Nom Prénom"
+            style={styles.input}
+            required
+          />
         </div>
         <div>
           <label style={styles.label}>Numéro de carte</label>
-          <input type="text" placeholder="1234 5678 9012 3456" style={styles.input} />
+          <input
+            type="text"
+            placeholder="1234 5678 9012 3456"
+            style={styles.input}
+            required
+          />
         </div>
         <div>
           <label style={styles.label}>Date d'expiration</label>
-          <input type="text" placeholder="MM/AA" style={styles.input} />
+          <input
+            type="text"
+            placeholder="MM/AA"
+            style={styles.input}
+            required
+          />
         </div>
         <div>
           <label style={styles.label}>CVV</label>
-          <input type="text" placeholder="123" style={styles.input} />
+          <input
+            type="text"
+            placeholder="123"
+            style={styles.input}
+            required
+          />
         </div>
         <div>
           <label style={styles.label}>Choisir l'école pour la livraison</label>
-          <select style={styles.select}>
+          <select style={styles.select} required>
+            <option value="">Sélectionnez une école</option>
             {ecoles.map((ecole, index) => (
               <option key={index} value={ecole}>{ecole}</option>
             ))}

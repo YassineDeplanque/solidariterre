@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import ChoixPetit from "./pages/ChoixPetit";
 import ChoixGrand from "./pages/ChoixGrand";
 import Achat from "./pages/Achat";
+import Carbone from "./pages/Carbone";
 
 function Layout() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/choixpetit" element={<ChoixPetit />} />
           <Route path="/choixgrand" element={<ChoixGrand />} />
           <Route path="/achat" element={<Achat />} />
+          <Route path="/carbone" element={<Carbone />} />
         </Route>
           <Route path="*" element={<Error />} />
 
