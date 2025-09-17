@@ -22,32 +22,44 @@ export default function Navbar() {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
+      flexWrap: "wrap",
       padding: "10px 20px",
       position: "sticky",
       top: 0,
+      zIndex: 1000,
+    },
+    brandContainer: {
+      display: "flex",
+      alignItems: "center",
+      gap: "10px",
     },
     brand: {
       fontSize: "1.5rem",
       fontWeight: "bold",
       textDecoration: "none",
       color: "white",
+      display: "flex",
+      alignItems: "center",
     },
     links: {
       display: "flex",
-      gap: "20px",
+      gap: "15px",
+      flexWrap: "wrap",
+      maxWidth: "70%",
     },
     link: {
       textDecoration: "none",
       color: "white",
       fontWeight: "500",
       transition: "color 0.3s",
+      whiteSpace: "nowrap",
     },
     activeLink: {
-      color: "#a5d6a7", // vert clair pour indiquer la page active
+      color: "#a5d6a7",
       fontWeight: "bold",
     },
     burger: {
-      fontSize: "1.5rem",
+      fontSize: "1.8rem",
       cursor: "pointer",
       display: "block",
     },
@@ -57,62 +69,72 @@ export default function Navbar() {
       gap: "15px",
       backgroundColor: "#388e3c",
       padding: "15px",
+      width: "100%",
     },
   };
 
+  const renderLinks = () => (
+    <>
+      <NavLink
+        to="/"
+        style={({ isActive }) =>
+          isActive ? { ...styles.link, ...styles.activeLink } : styles.link
+        }
+        onClick={() => setIsOpen(false)}
+      >
+        Accueil
+      </NavLink>
+      <NavLink
+        to="/agriculteur"
+        style={({ isActive }) =>
+          isActive ? { ...styles.link, ...styles.activeLink } : styles.link
+        }
+        onClick={() => setIsOpen(false)}
+      >
+        Nos agriculteurs
+      </NavLink>
+      <NavLink
+        to="/produit"
+        style={({ isActive }) =>
+          isActive ? { ...styles.link, ...styles.activeLink } : styles.link
+        }
+        onClick={() => setIsOpen(false)}
+      >
+        Nos produits
+      </NavLink>
+      <NavLink
+        to="/engagement"
+        style={({ isActive }) =>
+          isActive ? { ...styles.link, ...styles.activeLink } : styles.link
+        }
+        onClick={() => setIsOpen(false)}
+      >
+        Notre engagement
+      </NavLink>
+      <NavLink
+        to="/login"
+        style={({ isActive }) =>
+          isActive ? { ...styles.link, ...styles.activeLink } : styles.link
+        }
+        onClick={() => setIsOpen(false)}
+      >
+        Se connecter
+      </NavLink>
+    </>
+  );
+
   return (
     <nav style={styles.navbar}>
-      <NavLink to="/" style={styles.brand}>
-        SolidariTerre
-      </NavLink>
+      <div style={styles.brandContainer}>
+        <NavLink to="/" style={styles.brand}>
+          SolidariTerre
+        </NavLink>
+      </div>
 
       {/* Liens desktop */}
-      {!isMobile && (
-        <div style={styles.links}>
-          <NavLink
-            to="/"
-            style={({ isActive }) =>
-              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
-            }
-          >
-            Accueil
-          </NavLink>
-          <NavLink
-            to="/agriculteur"
-            style={({ isActive }) =>
-              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
-            }
-          >
-            Nos agriculteurs
-          </NavLink>
-          <NavLink
-            to="/produit"
-            style={({ isActive }) =>
-              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
-            }
-          >
-            Nos produits
-          </NavLink>
-          <NavLink
-            to="/engagement"
-            style={({ isActive }) =>
-              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
-            }
-          >
-            Notre engagement
-          </NavLink>
-          <NavLink
-            to="/login"
-            style={({ isActive }) =>
-              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
-            }
-          >
-            Se
-          </NavLink>
-        </div>
-      )}
+      {!isMobile && <div style={styles.links}>{renderLinks()}</div>}
 
-      {/* Burger menu (mobile) */}
+      {/* Burger menu mobile */}
       {isMobile && (
         <div style={styles.burger} onClick={() => setIsOpen(!isOpen)}>
           ☰
@@ -120,55 +142,7 @@ export default function Navbar() {
       )}
 
       {/* Menu mobile */}
-      {isMobile && isOpen && (
-        <div style={styles.mobileMenu}>
-          <NavLink
-            to="/"
-            style={({ isActive }) =>
-              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
-            }
-            onClick={() => setIsOpen(false)}
-          >
-            Accueil
-          </NavLink>
-          <NavLink
-            to="/agriculteur"
-            style={({ isActive }) =>
-              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
-            }
-            onClick={() => setIsOpen(false)}
-          >
-            Nos agriculteurs
-          </NavLink>
-          <NavLink
-            to="/produit"
-            style={({ isActive }) =>
-              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
-            }
-            onClick={() => setIsOpen(false)}
-          >
-            Nos produits
-          </NavLink>
-          <NavLink
-            to="/engagement"
-            style={({ isActive }) =>
-              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
-            }
-            onClick={() => setIsOpen(false)}
-          >
-            Notre engagement
-          </NavLink>
-          <NavLink
-            to="/login"
-            style={({ isActive }) =>
-              isActive ? { ...styles.link, ...styles.activeLink } : styles.link
-            }
-            onClick={() => setIsOpen(false)}
-          >
-            Se connecter
-          </NavLink>
-        </div>
-      )}
+      {isMobile && isOpen && <div style={styles.mobileMenu}>{renderLinks()}</div>}
     </nav>
   );
 }
