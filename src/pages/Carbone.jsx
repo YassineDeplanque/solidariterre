@@ -1,5 +1,24 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 export default function Carbone() {
   const styles = {
@@ -8,7 +27,7 @@ export default function Carbone() {
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      height: "100vh",
+      minHeight: "100vh",
       backgroundColor: "#e8f5e9",
       color: "#1b5e20",
       fontFamily: "Arial, sans-serif",
@@ -31,11 +50,6 @@ export default function Carbone() {
       color: "#43a047",
       margin: "10px 0",
     },
-    impact: {
-      fontSize: "1.2rem",
-      marginBottom: "30px",
-      maxWidth: "700px",
-    },
     button: {
       padding: "12px 24px",
       backgroundColor: "#43a047",
@@ -46,9 +60,47 @@ export default function Carbone() {
       cursor: "pointer",
       textDecoration: "none",
       transition: "background-color 0.3s ease",
+      marginTop: "20px",
     },
     activeButton: {
       backgroundColor: "#2e7d32",
+    },
+    chartContainer: {
+      width: "80%",
+      maxWidth: "600px",
+      marginBottom: "30px",
+    },
+  };
+
+  const data = {
+    labels: ["Supermarché", "SolidariTerre"],
+    datasets: [
+      {
+        label: "CO₂ émis (kg)",
+        data: [4.5, 1.2],
+        backgroundColor: ["#f44336", "#43a047"], // rouge vs vert
+        borderRadius: 5,
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      title: {
+        display: true,
+        text: "Comparatif CO₂ par achat",
+        font: { size: 18 },
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: { stepSize: 1 },
+      },
     },
   };
 
@@ -61,14 +113,11 @@ export default function Carbone() {
         pour la planète.
       </p>
 
-      <div style={styles.highlight}>
-        🌍 Votre bilan carbone :
+      <div style={styles.highlight}>🌍 Votre bilan carbone :</div>
+
+      <div style={styles.chartContainer}>
+        <Bar data={data} options={options} />
       </div>
-      <p style={styles.impact}>
-        Aller au supermarché pour ce panier = <b>+4,5 kg CO₂</b><br />
-        Acheter chez SolidariTerre = <b>+1,2 kg CO₂</b><br /><br />
-        🎉 Vous avez économisé environ <b>3,3 kg de CO₂</b> sur cet achat !
-      </p>
 
       <p style={styles.subtitle}>
         Chaque geste compte. Ensemble, nous réduisons les transports, soutenons

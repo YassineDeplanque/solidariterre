@@ -107,7 +107,7 @@ export default function Navbar() {
               isActive ? { ...styles.link, ...styles.activeLink } : styles.link
             }
           >
-            Se connectrer
+            Se
           </NavLink>
         </div>
       )}
